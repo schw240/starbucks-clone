@@ -705,4 +705,46 @@ header .badges .badge {
 }
 .reserve-store .inner {
 	height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.reserve-store .medal {
+	width: 334px;
+	height: 334px;
+	/* 자연스러운 3D효과를 위해 원근감 주기 */
+	perspective: 600px;
+}
+.reserve-store .medal .front,
+.reserve-store .medal .back {
+	width: 334px;
+	height: 334px;
+	/* 뒤에 있는 이미지를 숨겨줌 */
+	backface-visibility: hidden;
+	transition: 1s;
+}
+.reserve-store .medal .front {
+	/* absolute 속성을 통해 back 이미지가 위로 올라와
+	front 이미지랑 겹쳐짐 */
+	position: absolute;
+	transform: rotateY(0deg);
+}
+.reserve-store .medal:hover .front {
+	/* 커서가 올라갔을 때 프론트 이미지 180도 회전 */
+	transform: rotateY(180deg);	
+}
+.reserve-store .medal .back {
+	/* 180도 회전 상태 */
+	transform: rotateY(-180deg);
+}
+.reserve-store .medal:hover .back {
+	/* 백 이미지 원상복구 시켜서 보이게 하기 */
+	transform: rotateY(0deg);
+}
+.reserve-store .medal .back .btn {
+	position: absolute;
+	top: 240px;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
