@@ -85,6 +85,19 @@ new Swiper('.promotion .swiper-container', {
         nextEl: '.promotion .swiper-next'
     }
 })
+new Swiper('.awards .swiper-container', {
+    direction: 'horizontal', // 수평
+    autoplay: true,
+    loop: true,
+    spaceBetween: 30,
+    slidesPerView: 5,
+    navigation: {
+        prevEl: '.awards .swiper-prev',
+        nextEl: '.awards .swiper-next'
+    }
+})
+
+
 
 const promotionEl = document.querySelector('.promotion');
 const promotionToggleBtn = document.querySelector('.toggle-promotion');
@@ -139,3 +152,7 @@ spyEls.forEach(function (spyEl) {
     .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
     .addTo(new ScrollMagic.Controller()) // 컨트롤러에 장면을 할당(필수!)
 })
+
+
+const thisYear = document.querySelector('.this-year')
+thisYear.textContent = new Date().getFullYear(); // 올해 날자까 반환되어 thisYear의 텍스트에 담김
