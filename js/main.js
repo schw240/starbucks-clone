@@ -24,6 +24,7 @@ searchInputEl.addEventListener('blur', function () {
 
 // 일정값 이상 내려 갈 경우 뱃지 없애기
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top')
 
 window.addEventListener('scroll', _.throttle(function () {
     console.log(window.scrollY)
@@ -38,6 +39,10 @@ window.addEventListener('scroll', _.throttle(function () {
             // 투명해지기만 할 뿐 존재는 함 따라서 아래 속성 필요
             display: 'none'
         })
+        // to-top 버튼 보이기
+        gsap.to(toTopEl, .2, {
+            x: 0
+        })
     } else {
         // 배지 보이기
         // badgeEl.style.display = 'block';
@@ -45,10 +50,21 @@ window.addEventListener('scroll', _.throttle(function () {
             opacity: 1,
             display: 'block'
         })
+        // to-top 버튼 숨기기
+        gsap.to(toTopEl, .2, {
+            x: 100,
+        })
     }
 }, 300))
 // _.throttle(함수, 시간) 시간만큼 부하주기 그냥 실행하면 함수가 너무 많이 실행되므로
 
+
+// to-top 클릭시 맨 위로 올라가기
+toTopEl.addEventListener('click', function () {
+    gsap.to(window, .7, {
+        scrollTo: 0 // 화면의 위치를 0으로 옮겨주기
+    })
+})
 
 const fadeEls = document.querySelectorAll('.visual .fade-in');
 fadeEls.forEach(function (fadeEl, index) {
